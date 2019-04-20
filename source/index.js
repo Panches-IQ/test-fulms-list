@@ -2,6 +2,8 @@ import service from './services';
 import { get, each } from 'lodash';
 import { createElement, getValue, setValue } from './common';
 
+import '../styles/main.less';
+
 const renderCast = () => {
     const casts = getValue('cast');
     const castName = getValue('cast_name');
@@ -28,7 +30,7 @@ const renderCast = () => {
         const gender = get(item, 'person.gender', null) ? `<div class='person_gender'>${'Gender: '+item.person.gender}</div>` : '';
         const birthday = get(item, 'person.birthday', null) ? `<div class='person_birthday'>${'Birth: '+item.person.birthday}</div>` : '';
         el.innerHTML = `
-            <div class='person_name'>${'Name: '+get(item, 'person.name', '***')}</div>
+            <div class='person_name'>${get(item, 'person.name', '***')}</div>
             ${img}
             ${gender}
             ${birthday}
@@ -56,8 +58,15 @@ const renderFilms = () => {
     const data = getValue('data');
     const container = getValue('films_container');
 
+    if (!data) {
+        container.innerHTML = '';
+        return;
+    }
+
     if ( !get(data, 'length', 0) ) {
         container.innerHTML = `<div> No search data found </div>`;
+        setValue('cast_name', null);
+        renderCast();
         return;
     }
 
@@ -90,7 +99,7 @@ const runSearch = () => {
 const resetSearch = () => {
     const input = getValue('search_input');
     input.value = '';
-    setValue('data', []);
+    setValue('data', null);
     setValue('cast_name', null);
     renderFilms();
     renderCast();

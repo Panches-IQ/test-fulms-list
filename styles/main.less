@@ -1,0 +1,70 @@
+@borderRadius: 15px;
+@backColor: rgb(205, 245, 205);
+
+#films_app_container {
+    width: 90%;
+    margin: auto;
+    background-color: #FEFEFE;
+
+    .input_wrapper {
+        margin-top: 50px;
+        padding: 20px;
+        height: 50px;
+        background-color: @backColor;
+        border-radius: @borderRadius;
+
+        label, input {
+            font-size: 18px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            position: relative;
+            vertical-align: middle;
+            height: 30px;
+
+            &#input_search {
+                padding: 5px;
+                border-radius: 4px;
+                border: 2px solid rgb(53, 156, 53);
+            }
+        }
+    }
+
+    #films_container {
+        margin-top: 50px;
+        padding: 20px;
+        border-radius: @borderRadius;
+    
+        .film_wrapper {
+            cursor: pointer;
+            font-size: 18px;
+            color: blue;
+        }
+    }
+
+    #casts_container {
+        margin-top: 50px;
+        background-color: @backColor;
+        border-radius: @borderRadius;
+
+        .film_title {
+            text-align: center;
+            color: #101040;
+            font-size: 28px;
+        }
+
+        .person_wrapper {
+            background-color: coral;
+            padding: 20px;
+            margin: 30px;
+            display: inline-block;
+            border-radius: 10px;
+            color: #505050;
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            .person_name {
+                font-weight: 600;
+                font-size: 18px;
+            }
+        }
+    }    
+}
